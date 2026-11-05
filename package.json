@@ -16,7 +16,11 @@
     "dev:web": "npm run dev --workspace frontend",
     "build": "npm run build --workspace frontend",
     "typecheck": "npm run typecheck --workspace frontend",
-    "format": "prettier --write frontend/src frontend/vite.config.ts frontend/tsconfig.json package.json frontend/package.json compose.yaml"
+    "format": "prettier --write frontend/src frontend/vite.config.ts frontend/tsconfig.json package.json frontend/package.json compose.yaml",
+    "demo:install": "python3 scripts/demo_host.py install",
+    "demo:start": "python3 scripts/demo_host.py start",
+    "demo:stop": "python3 scripts/demo_host.py stop",
+    "demo:status": "python3 scripts/demo_host.py status"
   },
   "devDependencies": {
     "embedded-postgres": "18.6.0-beta.19",
