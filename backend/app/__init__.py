@@ -1,0 +1,1 @@
+"""Semester planner HTTP API."""
