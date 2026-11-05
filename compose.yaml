@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_USER: semester
+      POSTGRES_PASSWORD: semester_local
+      POSTGRES_DB: semester
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - semester_pgdata:/var/lib/postgresql/data
+      - ./scripts/init-test-db.sql:/docker-entrypoint-initdb.d/01-test.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U semester -d semester"]
+      interval: 3s
+      timeout: 3s
+      retries: 15
+  api:
+    build: ./backend
+    env_file: backend/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://semester:semester_local@db:5432/semester
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on: [api]
+volumes:
+  semester_pgdata:
