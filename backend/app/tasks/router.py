@@ -19,6 +19,8 @@ def list_tasks(
     status: TaskStatus | None = None,
     priority: TaskPriority | None = None,
     due_before: date | None = None,
+    due_after: date | None = None,
+    pending: bool = False,
     sort: Literal["due_date", "priority", "created_at"] = "due_date",
 ):
     query = owned_tasks(user.id)
@@ -32,6 +34,10 @@ def list_tasks(
         query = query.where(Task.priority == priority)
     if due_before:
         query = query.where(Task.due_date <= due_before)
+    if due_after:
+        query = query.where(Task.due_date >= due_after)
+    if pending:
+        query = query.where(Task.status != "done")
     if sort == "priority":
         query = query.order_by(case((Task.priority == "high", 0), (Task.priority == "medium", 1), else_=2))
     elif sort == "created_at":
