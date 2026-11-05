@@ -3,6 +3,7 @@ from pathlib import Path
 import secrets
 import subprocess
 import venv
+import sys
 
 root = Path(__file__).resolve().parents[1]
 backend = root / "backend"
@@ -12,6 +13,9 @@ if not env.exists():
         "replace-with-a-random-secret-at-least-32-characters", secrets.token_hex(32)
     ))
     env.chmod(0o600)
+if "--env-only" in sys.argv:
+    print("Локальный файл backend/.env готов.")
+    raise SystemExit(0)
 if not (backend / ".venv").exists():
     venv.create(backend / ".venv", with_pip=True)
 requirements = backend / "requirements.txt"

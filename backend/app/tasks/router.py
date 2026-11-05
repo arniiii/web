@@ -25,7 +25,7 @@ def list_tasks(
 ):
     query = owned_tasks(user.id)
     if search.strip():
-        query = query.where(Task.title.icontains(search.strip(), autoescape=True))
+        query = query.where(Task.title.collate("und-x-icu").icontains(search.strip(), autoescape=True))
     if subject_id is not None:
         query = query.where(Task.subject_id == subject_id)
     if status:

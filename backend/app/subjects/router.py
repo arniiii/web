@@ -15,7 +15,7 @@ router = APIRouter(prefix="/subjects", tags=["Дисциплины"])
 def list_subjects(db: DB, user: CurrentUser, search: Annotated[str, Query(max_length=120)] = ""):
     query = select(Subject).where(Subject.user_id == user.id).options(selectinload(Subject.tasks))
     if search.strip():
-        query = query.where(Subject.title.icontains(search.strip(), autoescape=True))
+        query = query.where(Subject.title.collate("und-x-icu").icontains(search.strip(), autoescape=True))
     return db.scalars(query.order_by(Subject.created_at, Subject.id)).all()
 
 
