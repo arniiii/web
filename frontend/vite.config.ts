@@ -5,6 +5,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   return {
     plugins: [react()],
+    build: { target: "es2018" },
     server: {
       proxy: { "/api": env.API_PROXY_TARGET || "http://127.0.0.1:8000" },
     },

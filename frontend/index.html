@@ -4,9 +4,94 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#18352f" />
-    <meta name="description" content="Семестр — дисциплины, задания и дедлайны в одном учебном пространстве." />
+    <meta
+      name="description"
+      content="Семестр — дисциплины, задания и дедлайны в одном учебном пространстве."
+    />
     <title>Семестр — учебный планировщик</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      .startup {
+        max-width: 420px;
+        margin: 18vh auto;
+        padding: 28px;
+        color: #18352f;
+        font:
+          16px/1.6 system-ui,
+          sans-serif;
+      }
+      .startup h1 {
+        font-size: 28px;
+        line-height: 1.25;
+      }
+      .startup a {
+        display: inline-block;
+        padding: 10px 18px;
+        border-radius: 8px;
+        background: #18352f;
+        color: white;
+        text-decoration: none;
+      }
+      .startup [hidden] {
+        display: none;
+      }
+    </style>
+    <script id="startup-guard">
+      (function () {
+        var timer;
+
+        function showFailure() {
+          var title = document.getElementById("startup-title");
+          var message = document.getElementById("startup-message");
+          var retry = document.getElementById("startup-retry");
+          if (!title || !message || !retry) return;
+          title.textContent = "Не удалось загрузить приложение";
+          message.textContent =
+            "Обновите страницу. Если загрузка снова остановится, попробуйте другую сеть или обновите браузер.";
+          retry.href = window.location.pathname + "?reload=" + Date.now();
+          retry.hidden = false;
+          clearTimeout(timer);
+        }
+
+        window.addEventListener(
+          "error",
+          function (event) {
+            if (
+              (event.target && event.target.tagName === "SCRIPT") ||
+              event.filename
+            ) {
+              showFailure();
+            }
+          },
+          true,
+        );
+        timer = setTimeout(showFailure, 15000);
+        window.addEventListener(
+          "semester:ready",
+          function () {
+            clearTimeout(timer);
+          },
+          { once: true },
+        );
+      })();
+    </script>
   </head>
-  <body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body>
+  <body>
+    <div id="root">
+      <main class="startup" role="status">
+        <p>семестр.</p>
+        <h1 id="startup-title">Открываем учебный план…</h1>
+        <p id="startup-message">
+          Загружаем приложение. Обычно это занимает несколько секунд.
+        </p>
+        <a id="startup-retry" href="" hidden>Обновить страницу</a>
+        <noscript
+          ><p>
+            Для работы приложения включите JavaScript в настройках браузера.
+          </p></noscript
+        >
+      </main>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

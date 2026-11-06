@@ -53,6 +53,7 @@ export function App() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+    window.dispatchEvent(new Event("semester:ready"));
   }, [pathname]);
   return (
     <Routes>
