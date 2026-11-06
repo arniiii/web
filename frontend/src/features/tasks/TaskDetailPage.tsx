@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import {
-  BookOpen,
-  CalendarDays,
-  CheckCheck,
-  Pencil,
-  RotateCcw,
-  Trash2,
-} from "lucide-react";
+
 import {
   errorMessage,
   useDeleteTaskMutation,
@@ -70,7 +63,6 @@ export function TaskDetailPage() {
         actions={
           <>
             <Link className="button secondary" to={`/tasks/${id}/edit`}>
-              <Pencil size={16} />
               Редактировать
             </Link>
             <button
@@ -81,7 +73,7 @@ export function TaskDetailPage() {
                 setConfirm(true);
               }}
             >
-              <Trash2 size={18} />
+              Удалить
             </button>
           </>
         }
@@ -109,11 +101,6 @@ export function TaskDetailPage() {
               disabled={statusState.isLoading}
               onClick={toggle}
             >
-              {task.status === "done" ? (
-                <RotateCcw size={17} />
-              ) : (
-                <CheckCheck size={17} />
-              )}
               {statusState.isLoading
                 ? "Обновляем…"
                 : task.status === "done"
@@ -125,10 +112,7 @@ export function TaskDetailPage() {
         <aside className="panel task-properties">
           <h2>Детали задания</h2>
           <div>
-            <span>
-              <BookOpen size={16} />
-              Дисциплина
-            </span>
+            <span>Дисциплина</span>
             <Link to={`/subjects/${task.subject_id}`}>
               <i
                 className="color-dot"
@@ -138,10 +122,7 @@ export function TaskDetailPage() {
             </Link>
           </div>
           <div>
-            <span>
-              <CalendarDays size={16} />
-              Дедлайн
-            </span>
+            <span>Дедлайн</span>
             <strong>{fullDate(task.due_date)}</strong>
             {task.status !== "done" && task.due_date < dateKey() && (
               <small className="overdue">

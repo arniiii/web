@@ -1,5 +1,5 @@
 :root {
-  font-family: "Manrope Variable", "Segoe UI", sans-serif;
+  font-family: "Times New Roman", Times, "Liberation Serif", serif;
   color: #25332f;
   background: #f7f8f5;
   font-synthesis: none;
@@ -133,7 +133,7 @@ textarea:focus-visible {
   flex-shrink: 0;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 1.8px;
   color: #87917f;
@@ -155,7 +155,7 @@ textarea:focus-visible {
   gap: 9px;
   border-radius: 8px;
   padding: 12px 18px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 20px;
   border: 1px solid transparent;
@@ -213,7 +213,7 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--green);
   background: transparent;
@@ -324,16 +324,6 @@ textarea:focus-visible {
   letter-spacing: -1.2px;
   line-height: 38px;
 }
-.brand-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 37px;
-  border-radius: 9px;
-  background: var(--green);
-  color: #e0ecc9;
-}
 .brand-period {
   color: #789058;
   margin-left: -9px;
@@ -348,7 +338,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 13px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   color: #879084;
   padding: 12px 13px;
@@ -371,7 +361,7 @@ textarea:focus-visible {
   padding: 2px 5px;
   text-align: center;
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .progress-track {
   height: 5px;
@@ -407,14 +397,14 @@ textarea:focus-visible {
 }
 .account-link strong {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .account-link small {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   color: #92998c;
   margin-top: 4px;
 }
@@ -457,7 +447,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 10px;
+  font-size: 12px;
   color: #a4ab9f;
 }
 .breadcrumbs strong {
@@ -468,21 +458,8 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 20px;
-  font-size: 10px;
+  font-size: 12px;
   color: #9aa291;
-}
-.topbar-add {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #eef2e9;
-  border-radius: 7px;
-  width: 30px;
-  height: 30px;
-  color: #69815b;
-}
-.topbar-add:hover {
-  background: #dce8cf;
 }
 .main-content {
   padding: 37px 43px 40px;
@@ -535,34 +512,10 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   color: #7d8878;
   gap: 7px;
-}
-.stat-icon {
-  height: 32px;
-  width: 32px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.sage {
-  background: #f0f4e8;
-  color: #84996b;
-}
-.sand {
-  background: #f8f1e5;
-  color: #bb9a5f;
-}
-.lavender {
-  background: #f0eef8;
-  color: #9a8abd;
-}
-.peach {
-  background: #fbefe8;
-  color: #c18e72;
 }
 .stat-card > strong {
   display: block;
@@ -573,7 +526,7 @@ textarea:focus-visible {
   font-weight: 700;
 }
 .stat-card > small {
-  font-size: 9px;
+  font-size: 12px;
   color: #a2aa9a;
 }
 .dashboard-columns {
@@ -616,11 +569,11 @@ textarea:focus-visible {
   border-radius: 5px;
   background: #f0f3eb;
   color: #819173;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
 }
 .panel-heading .text-link {
-  font-size: 9px;
+  font-size: 12px;
 }
 .task-list ul {
   list-style: none;
@@ -633,7 +586,7 @@ textarea:focus-visible {
   padding: 10px 53px 10px 56px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 92px 85px;
-  font-size: 7px;
+  font-size: 12px;
   letter-spacing: 0.8px;
   color: #a3ac9c;
   font-weight: 600;
@@ -658,25 +611,12 @@ textarea:focus-visible {
 .task-check {
   width: 17px;
   height: 17px;
-  background: transparent;
-  border: 1px solid #dce2d5;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  color: white;
-}
-.task-check:hover {
-  border-color: #6b8e5d;
-  background: #f0f6e8;
-}
-.task-check.checked {
-  border-color: #688e5c;
-  background: #688e5c;
+  margin: 0;
+  accent-color: var(--green);
+  cursor: pointer;
 }
 .task-title {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.7;
   display: block;
@@ -691,7 +631,7 @@ textarea:focus-visible {
   gap: 9px;
   margin-top: 6px;
   flex-wrap: wrap;
-  font-size: 8px;
+  font-size: 12px;
   color: #97a08f;
 }
 .task-meta a {
@@ -708,10 +648,10 @@ textarea:focus-visible {
   background: #faf6ed;
   border-radius: 4px;
   padding: 2px 5px;
-  font-size: 7px;
+  font-size: 12px;
 }
 .task-date {
-  font-size: 9px;
+  font-size: 12px;
   color: #8e9985;
   display: flex;
   gap: 4px;
@@ -719,7 +659,7 @@ textarea:focus-visible {
   flex-wrap: wrap;
 }
 .task-date small {
-  font-size: 7px;
+  font-size: 12px;
   width: 100%;
   margin-left: 17px;
   margin-top: -1px;
@@ -731,7 +671,7 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 8px;
+  font-size: 12px;
   white-space: nowrap;
   color: #8f9984;
 }
@@ -750,10 +690,6 @@ textarea:focus-visible {
 }
 .priority-low {
   color: #7e9973;
-}
-.task-open {
-  padding: 0;
-  color: #bac2b3;
 }
 .task-done .task-title {
   color: #9ca894;
@@ -781,26 +717,12 @@ textarea:focus-visible {
   border-color: #b8ccb0;
   background: #fcfdf9;
 }
-.subject-icon {
-  width: 36px;
-  height: 39px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.subject-icon.large {
-  width: 60px;
-  height: 65px;
-  border-radius: 12px;
-}
-.subject-mini > span:nth-child(2) {
+.subject-mini > span {
   min-width: 0;
   flex: 1;
 }
 .subject-mini strong {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   display: block;
   overflow-wrap: anywhere;
@@ -808,7 +730,7 @@ textarea:focus-visible {
 }
 .subject-mini small {
   display: block;
-  font-size: 8px;
+  font-size: 12px;
   color: #a1a996;
   margin-top: 4px;
 }
@@ -831,7 +753,7 @@ textarea:focus-visible {
   color: #a0ac91;
 }
 .calendar-month {
-  font-size: 9px;
+  font-size: 12px;
   text-transform: capitalize;
   padding: 0 18px;
 }
@@ -851,11 +773,11 @@ textarea:focus-visible {
   color: #77846b;
 }
 .week-day small {
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 500;
 }
 .week-day strong {
-  font-size: 11px;
+  font-size: 12px;
 }
 .week-day > i {
   width: 3px;
@@ -878,7 +800,7 @@ textarea:focus-visible {
   color: #34583e;
 }
 .calendar-caption {
-  font-size: 8px;
+  font-size: 12px;
   color: #a4ae9a;
   padding: 0 18px 20px;
   display: flex;
@@ -930,12 +852,12 @@ textarea:focus-visible {
   letter-spacing: -0.5px;
 }
 .progress-ring small {
-  font-size: 9px;
+  font-size: 12px;
   color: #9ea98f;
   margin-top: 2px;
 }
 .progress-panel > p:last-of-type {
-  font-size: 9px;
+  font-size: 12px;
   color: #9aa58e;
 }
 .progress-legend {
@@ -950,7 +872,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 8px;
+  font-size: 12px;
   color: #97a18a;
 }
 .progress-legend i {
@@ -965,7 +887,7 @@ textarea:focus-visible {
 .progress-legend b {
   margin-left: 5px;
   color: #627551;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* Lists, forms and details. */
@@ -994,7 +916,7 @@ textarea:focus-visible {
   padding: 11px 0;
   width: 100%;
   min-width: 0;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text);
   outline: none;
 }
@@ -1039,12 +961,12 @@ textarea:focus-visible {
   overflow-wrap: anywhere;
 }
 .subject-card > p {
-  font-size: 11px;
+  font-size: 12px;
   color: #929e85;
   margin-top: 6px;
 }
 .subject-description {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
   color: #8c9880;
   margin: 17px 0 23px;
@@ -1059,7 +981,7 @@ textarea:focus-visible {
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  font-size: 9px;
+  font-size: 12px;
   color: #9aa58c;
   margin-bottom: 10px;
 }
@@ -1093,17 +1015,6 @@ textarea:focus-visible {
   align-items: center;
   flex-direction: column;
 }
-.empty-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 58px;
-  height: 58px;
-  border-radius: 17px;
-  background: #f2f5ec;
-  color: #97a67f;
-  margin-bottom: 16px;
-}
 .empty-state h3 {
   font-size: 16px;
   font-weight: 700;
@@ -1127,7 +1038,7 @@ textarea:focus-visible {
 .stack-form label {
   display: block;
   color: #66775b;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.8;
 }
@@ -1176,7 +1087,7 @@ textarea:focus-visible {
   margin: 0;
 }
 .color-picker legend {
-  font-size: 11px;
+  font-size: 12px;
   color: #66775b;
   font-weight: 600;
   margin-bottom: 12px;
@@ -1233,7 +1144,7 @@ textarea:focus-visible {
   display: block;
 }
 .subject-summary-progress > span {
-  font-size: 9px;
+  font-size: 12px;
   color: #98a68a;
   display: block;
   margin: 6px 0 12px;
@@ -1253,13 +1164,13 @@ textarea:focus-visible {
   align-items: center;
   gap: 7px;
   color: #929f84;
-  font-size: 11px;
+  font-size: 12px;
 }
 .sort-label select {
   border: 0;
   background: transparent;
   color: #7a8c6b;
-  font-size: 10px;
+  font-size: 12px;
   max-width: 150px;
 }
 .filter-bar {
@@ -1269,7 +1180,7 @@ textarea:focus-visible {
   padding: 0 23px 21px;
 }
 .filter-bar label {
-  font-size: 9px;
+  font-size: 12px;
   color: #99a58b;
   font-weight: 600;
   min-width: 0;
@@ -1283,7 +1194,7 @@ textarea:focus-visible {
   background: #fff;
   border-radius: 6px;
   padding: 10px 9px;
-  font-size: 10px;
+  font-size: 12px;
   color: #788b66;
   height: 38px;
   margin-top: 7px;
@@ -1297,7 +1208,7 @@ textarea:focus-visible {
   gap: 15px;
 }
 .filter-summary .muted {
-  font-size: 9px;
+  font-size: 12px;
 }
 .filter-summary > div {
   display: flex;
@@ -1307,7 +1218,7 @@ textarea:focus-visible {
   justify-content: flex-end;
 }
 .filter-summary .text-link {
-  font-size: 9px;
+  font-size: 12px;
 }
 .filter-chip {
   display: flex;
@@ -1315,7 +1226,7 @@ textarea:focus-visible {
   gap: 5px;
   background: #f3f6ec;
   border-radius: 5px;
-  font-size: 9px;
+  font-size: 12px;
   padding: 2px 3px 2px 8px;
   color: #889a74;
 }
@@ -1335,7 +1246,7 @@ textarea:focus-visible {
   margin-bottom: 28px;
 }
 .status-badge {
-  font-size: 10px;
+  font-size: 12px;
   padding: 5px 9px;
   border-radius: 5px;
 }
@@ -1387,7 +1298,7 @@ textarea:focus-visible {
   align-items: center;
   gap: 7px;
   color: #a0ad92;
-  font-size: 10px;
+  font-size: 12px;
   margin-bottom: 9px;
 }
 .task-properties > div > strong {
@@ -1410,7 +1321,7 @@ textarea:focus-visible {
 }
 .task-properties small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 9px;
   line-height: 1.8;
 }
@@ -1568,10 +1479,10 @@ textarea:focus-visible {
     font-size: 12px;
   }
   .task-date {
-    font-size: 10px;
+    font-size: 12px;
   }
   .priority {
-    font-size: 9px;
+    font-size: 12px;
   }
 }
 @media (max-width: 1250px) {
@@ -1604,9 +1515,6 @@ textarea:focus-visible {
     gap: 9px;
     padding: 16px;
   }
-  .task-open {
-    display: none;
-  }
   .task-list-heading {
     grid-template-columns: minmax(0, 1fr) 73px 60px;
     padding-left: 42px;
@@ -1614,13 +1522,13 @@ textarea:focus-visible {
     gap: 9px;
   }
   .task-title {
-    font-size: 10px;
+    font-size: 12px;
   }
   .task-date {
-    font-size: 8px;
+    font-size: 12px;
   }
   .priority {
-    font-size: 7px;
+    font-size: 12px;
   }
   .panel-heading {
     padding-inline: 17px;
@@ -1668,20 +1576,13 @@ textarea:focus-visible {
     padding: 14px 12px;
   }
   .stat-top {
-    font-size: 9px;
-  }
-  .stat-icon {
-    width: 27px;
-    height: 27px;
-  }
-  .stat-icon svg {
-    width: 15px;
+    font-size: 12px;
   }
   .stat-card > small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .task-title {
-    font-size: 11px;
+    font-size: 12px;
   }
   .task-row {
     grid-template-columns: 17px minmax(0, 1fr) 85px 75px;
@@ -1690,10 +1591,10 @@ textarea:focus-visible {
     grid-template-columns: minmax(0, 1fr) 85px 75px;
   }
   .task-date {
-    font-size: 9px;
+    font-size: 12px;
   }
   .priority {
-    font-size: 8px;
+    font-size: 12px;
   }
   .task-detail-grid {
     grid-template-columns: 1fr;
@@ -1765,7 +1666,7 @@ textarea:focus-visible {
     padding: 28px;
   }
   .auth-switch {
-    font-size: 9px;
+    font-size: 12px;
     gap: 8px;
   }
   .auth-form-wrap {
@@ -1780,10 +1681,10 @@ textarea:focus-visible {
     gap: 9px;
   }
   .topbar-right time {
-    font-size: 8px;
+    font-size: 12px;
   }
   .breadcrumbs {
-    font-size: 9px;
+    font-size: 12px;
     gap: 7px;
   }
   .main-content {
@@ -1798,10 +1699,10 @@ textarea:focus-visible {
     letter-spacing: -0.8px;
   }
   .page-header .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .page-subtitle {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.9;
     margin-top: 8px;
   }
@@ -1811,7 +1712,7 @@ textarea:focus-visible {
     gap: 9px;
   }
   .header-actions > .button {
-    font-size: 11px;
+    font-size: 12px;
     padding: 10px 14px;
   }
   .stats-grid {
@@ -1823,13 +1724,13 @@ textarea:focus-visible {
     padding: 15px 17px;
   }
   .stat-top {
-    font-size: 10px;
+    font-size: 12px;
   }
   .stat-card > strong {
     font-size: 27px;
   }
   .stat-card > small {
-    font-size: 9px;
+    font-size: 12px;
   }
   .dashboard-aside {
     grid-template-columns: 1fr;
@@ -1850,7 +1751,7 @@ textarea:focus-visible {
     font-size: 14px;
   }
   .panel-heading .text-link {
-    font-size: 8px;
+    font-size: 12px;
     gap: 4px;
   }
   .task-list-heading {
@@ -1865,15 +1766,15 @@ textarea:focus-visible {
     display: none;
   }
   .task-title {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.7;
   }
   .task-meta {
-    font-size: 8px;
+    font-size: 12px;
     gap: 5px;
   }
   .task-date {
-    font-size: 8px;
+    font-size: 12px;
     align-self: start;
     padding-top: 3px;
   }
@@ -1891,10 +1792,10 @@ textarea:focus-visible {
     padding: 0 16px 18px;
   }
   .subject-mini strong {
-    font-size: 11px;
+    font-size: 12px;
   }
   .subject-mini small {
-    font-size: 9px;
+    font-size: 12px;
   }
   .subjects-grid {
     grid-template-columns: 1fr;
@@ -1918,7 +1819,7 @@ textarea:focus-visible {
     gap: 12px;
   }
   .toolbar > .muted {
-    font-size: 10px;
+    font-size: 12px;
   }
   .search-field {
     max-width: none;
@@ -1961,19 +1862,15 @@ textarea:focus-visible {
     flex-wrap: wrap;
   }
   .form-actions .button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 10px 13px;
   }
   .subject-summary {
     padding: 23px 20px;
     gap: 17px;
   }
-  .subject-summary .subject-icon.large {
-    width: 47px;
-    height: 52px;
-  }
   .subject-summary p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .subject-summary-progress {
     border-top: 1px solid #edf0e6;
@@ -1984,7 +1881,7 @@ textarea:focus-visible {
   }
   .subject-summary + .panel .panel-heading .button {
     padding: 8px 12px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .task-description {
     padding: 23px 20px;
@@ -2004,14 +1901,14 @@ textarea:focus-visible {
     font-size: 15px;
   }
   .empty-state p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .auth-main {
     flex: 1;
     padding: 25px;
   }
   .auth-switch {
-    font-size: 10px;
+    font-size: 12px;
   }
   .auth-form-wrap {
     padding: 46px 0;
@@ -2023,16 +1920,16 @@ textarea:focus-visible {
     margin-top: 28px;
   }
   .auth-main .stack-form label {
-    font-size: 11px;
+    font-size: 12px;
   }
   .back-link {
-    font-size: 11px;
+    font-size: 12px;
   }
   .profile-heading {
     gap: 13px;
   }
   .profile-heading .muted {
-    font-size: 10px;
+    font-size: 12px;
     overflow-wrap: anywhere;
   }
 }

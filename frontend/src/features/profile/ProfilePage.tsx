@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Check, Save } from "lucide-react";
+
 import {
   errorMessage,
   useMeQuery,
@@ -80,13 +80,11 @@ function ProfileForm({ user }: { user: User }) {
       <FormError message={error} />
       {saved && (
         <p className="success-message" role="status">
-          <Check size={16} />
           Изменения сохранены
         </p>
       )}
       <div className="form-actions">
         <button className="button primary" disabled={isLoading}>
-          <Save size={16} />
           {isLoading ? "Сохраняем…" : "Сохранить изменения"}
         </button>
       </div>

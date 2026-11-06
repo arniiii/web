@@ -6,18 +6,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import {
-  BookOpen,
-  CheckCheck,
-  ChevronRight,
-  LayoutDashboard,
-  Layers3,
-  LogOut,
-  Menu,
-  Plus,
-  UserRound,
-  X,
-} from "lucide-react";
+
 import { api, useMeQuery, useTasksQuery } from "../shared/api";
 import { useAppDispatch } from "./store";
 import { signedOut } from "../features/auth/authSlice";
@@ -53,9 +42,6 @@ export function Layout() {
       )}
       <aside className={`sidebar ${open ? "open" : ""}`}>
         <Link to="/overview" className="brand">
-          <span className="brand-icon">
-            <Layers3 size={23} />
-          </span>
           семестр<span className="brand-period">.</span>
         </Link>
         <button
@@ -63,23 +49,21 @@ export function Layout() {
           aria-label="Закрыть меню"
           onClick={() => setOpen(false)}
         >
-          <X size={20} />
+          Закрыть
         </button>
         <nav aria-label="Основная навигация">
           {[
-            ["/overview", "Обзор", LayoutDashboard],
-            ["/subjects", "Дисциплины", BookOpen],
-            ["/tasks", "Задания", CheckCheck],
-            ["/profile", "Профиль", UserRound],
-          ].map(([to, title, Icon]) => {
-            const NavIcon = Icon as typeof BookOpen;
+            ["/overview", "Обзор"],
+            ["/subjects", "Дисциплины"],
+            ["/tasks", "Задания"],
+            ["/profile", "Профиль"],
+          ].map(([to, title]) => {
             return (
               <NavLink
                 key={to as string}
                 to={to as string}
                 onClick={() => setOpen(false)}
               >
-                <NavIcon size={19} />
                 <span>{title as string}</span>
                 {to === "/tasks" && (
                   <span className="nav-count">
@@ -106,7 +90,7 @@ export function Layout() {
             aria-label="Выйти из аккаунта"
             title="Выйти"
           >
-            <LogOut size={18} />
+            Выйти
           </button>
         </div>
       </aside>
@@ -118,10 +102,10 @@ export function Layout() {
               onClick={() => setOpen(true)}
               aria-label="Открыть меню"
             >
-              <Menu size={21} />
+              Меню
             </button>
             <span>Мой семестр</span>
-            <ChevronRight size={13} />
+            <span aria-hidden="true">/</span>
             <strong>{section}</strong>
           </div>
           <div className="topbar-right">
@@ -132,13 +116,6 @@ export function Layout() {
                 year: "numeric",
               })}
             </time>
-            <Link
-              className="topbar-add"
-              to="/tasks/new"
-              aria-label="Добавить задание"
-            >
-              <Plus size={19} />
-            </Link>
           </div>
         </header>
         <main className="main-content" id="main-content">

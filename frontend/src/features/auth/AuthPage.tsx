@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { ArrowRight, Eye, EyeOff, Layers3 } from "lucide-react";
+
 import {
   api,
   errorMessage,
@@ -62,14 +62,11 @@ export function AuthPage({ register = false }: { register?: boolean }) {
       <main className="auth-main" id="main-content">
         <div className="auth-header">
           <Link to="/login" className="brand">
-            <span className="brand-icon">
-              <Layers3 size={23} />
-            </span>
             семестр<span className="brand-period">.</span>
           </Link>
           <div className="auth-switch">
             <Link to={register ? "/login" : "/register"}>
-              {register ? "Войти" : "Создать аккаунт"} <ArrowRight size={14} />
+              {register ? "Войти" : "Создать аккаунт"}
             </Link>
           </div>
         </div>
@@ -128,7 +125,7 @@ export function AuthPage({ register = false }: { register?: boolean }) {
                   onClick={() => setVisible(!visible)}
                   aria-label={visible ? "Скрыть пароль" : "Показать пароль"}
                 >
-                  {visible ? <EyeOff size={18} /> : <Eye size={18} />}
+                  {visible ? "Скрыть" : "Показать"}
                 </button>
               </div>
             </label>
@@ -139,7 +136,6 @@ export function AuthPage({ register = false }: { register?: boolean }) {
                 : register
                   ? "Создать аккаунт"
                   : "Войти в аккаунт"}
-              <ArrowRight size={18} />
             </button>
           </form>
         </div>

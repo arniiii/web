@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Plus, Search, SlidersHorizontal, X } from "lucide-react";
+
 import { useSubjectsQuery, useTasksQuery } from "../../shared/api";
 import { fullDate, priorityLabels, statusLabels } from "../../shared/dates";
 import { EmptyState, ErrorState, PageHeader, Spinner } from "../../shared/ui";
@@ -53,7 +53,6 @@ export function TasksPage() {
         title="Мои задания"
         actions={
           <Link className="button primary" to="/tasks/new">
-            <Plus size={17} />
             Добавить задание
           </Link>
         }
@@ -61,7 +60,6 @@ export function TasksPage() {
       <section className="panel tasks-panel">
         <div className="task-toolbar">
           <label className="search-field">
-            <Search size={17} />
             <input
               aria-label="Поиск заданий"
               value={search}
@@ -71,7 +69,6 @@ export function TasksPage() {
             />
           </label>
           <label className="sort-label">
-            <SlidersHorizontal size={15} />
             <select
               aria-label="Сортировка"
               value={params.get("sort") || "due_date"}
@@ -154,9 +151,7 @@ export function TasksPage() {
                   className="icon-button"
                   aria-label="Убрать фильтр невыполненных"
                   onClick={() => change("pending", "")}
-                >
-                  <X size={13} />
-                </button>
+                ></button>
               </span>
             )}
             {params.get("due_after") && (
@@ -166,9 +161,7 @@ export function TasksPage() {
                   className="icon-button"
                   aria-label="Убрать нижнюю границу даты"
                   onClick={() => change("due_after", "")}
-                >
-                  <X size={13} />
-                </button>
+                ></button>
               </span>
             )}
             {params.size > 0 && (
@@ -211,7 +204,6 @@ export function TasksPage() {
                 </button>
               ) : (
                 <Link className="button primary" to="/tasks/new">
-                  <Plus size={16} />
                   Первое задание
                 </Link>
               )

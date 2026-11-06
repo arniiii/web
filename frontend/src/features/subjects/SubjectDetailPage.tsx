@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { BookOpen, Pencil, Plus, Trash2 } from "lucide-react";
+
 import {
   errorMessage,
   useDeleteSubjectMutation,
@@ -60,7 +60,6 @@ export function SubjectDetailPage() {
         actions={
           <>
             <Link className="button secondary" to={`/subjects/${id}/edit`}>
-              <Pencil size={16} />
               Редактировать
             </Link>
             <button
@@ -71,18 +70,12 @@ export function SubjectDetailPage() {
               }}
               aria-label="Удалить дисциплину"
             >
-              <Trash2 size={18} />
+              Удалить
             </button>
           </>
         }
       />
       <section className="panel subject-summary">
-        <span
-          className="subject-icon large"
-          style={{ color: subject.color, background: `${subject.color}14` }}
-        >
-          <BookOpen size={28} />
-        </span>
         <div>
           <h2>О дисциплине</h2>
           <p className="preserve-lines">
@@ -103,7 +96,6 @@ export function SubjectDetailPage() {
         <div className="panel-heading">
           <h2>Задания дисциплины</h2>
           <Link className="button primary" to={`/tasks/new?subject_id=${id}`}>
-            <Plus size={16} />
             Добавить задание
           </Link>
         </div>

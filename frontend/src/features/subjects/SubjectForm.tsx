@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Check, Save } from "lucide-react";
+
 import {
   errorMessage,
   useCreateSubjectMutation,
@@ -113,9 +113,7 @@ function SubjectForm({ subject }: { subject?: Subject }) {
                   checked={data.color === color}
                   onChange={() => field("color", color)}
                 />
-                <span style={{ background: color }}>
-                  {data.color === color && <Check size={18} />}
-                </span>
+                <span style={{ background: color }}></span>
                 <span className="sr-only">Цвет {i + 1}</span>
               </label>
             ))}
@@ -127,7 +125,6 @@ function SubjectForm({ subject }: { subject?: Subject }) {
             Отмена
           </Link>
           <button className="button primary" disabled={busy}>
-            <Save size={16} />
             {busy ? "Сохраняем…" : "Сохранить дисциплину"}
           </button>
         </div>

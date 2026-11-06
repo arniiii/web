@@ -1,12 +1,3 @@
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  CalendarDays,
-  CheckCheck,
-  Flag,
-  Plus,
-} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSubjectsQuery, useTasksQuery } from "../../shared/api";
 import { dateKey, dayOffset, parseDate } from "../../shared/dates";
@@ -43,7 +34,6 @@ export function DashboardPage() {
         title="Обзор семестра"
         actions={
           <Link className="button primary" to="/tasks/new">
-            <Plus size={17} />
             Добавить задание
           </Link>
         }
@@ -53,39 +43,28 @@ export function DashboardPage() {
           {
             label: "Дисциплины",
             value: subjects.length,
-            icon: BookOpen,
-            className: "sage",
             to: "/subjects",
           },
           {
             label: "Ближайшие 7 дней",
             value: week,
-            icon: CalendarDays,
-            className: "sand",
             to: `/tasks?due_after=${dateKey()}&due_before=${dayOffset(6)}&pending=true`,
           },
           {
             label: "Выполнено",
             value: done,
             text: `из ${tasks.length} заданий`,
-            icon: CheckCheck,
-            className: "lavender",
             to: "/tasks?status=done",
           },
           {
             label: "Просрочено",
             value: overdue,
-            icon: Flag,
-            className: "peach",
             to: `/tasks?due_before=${dayOffset(-1)}&pending=true`,
           },
         ].map((stat) => (
           <Link to={stat.to} className="stat-card" key={stat.label}>
             <div className="stat-top">
               <span>{stat.label}</span>
-              <span className={`stat-icon ${stat.className}`}>
-                <stat.icon size={18} />
-              </span>
             </div>
             <strong>{stat.value.toString().padStart(2, "0")}</strong>
             {stat.text && <small>{stat.text}</small>}
@@ -103,7 +82,7 @@ export function DashboardPage() {
                 </h2>
               </div>
               <Link className="text-link" to="/tasks">
-                Все задания <ArrowRight size={15} />
+                Все задания
               </Link>
             </div>
             {upcoming.length ? (
@@ -123,7 +102,6 @@ export function DashboardPage() {
                     className="button secondary"
                     to={subjects.length ? "/tasks/new" : "/subjects/new"}
                   >
-                    <Plus size={16} />
                     {subjects.length
                       ? "Добавить задание"
                       : "Добавить дисциплину"}
@@ -138,7 +116,7 @@ export function DashboardPage() {
                 <h2>Мои дисциплины</h2>
               </div>
               <Link className="text-link" to="/subjects">
-                Все дисциплины <ArrowRight size={15} />
+                Все дисциплины
               </Link>
             </div>
             {subjects.length ? (
@@ -149,15 +127,6 @@ export function DashboardPage() {
                     key={subject.id}
                     to={`/subjects/${subject.id}`}
                   >
-                    <span
-                      className="subject-icon"
-                      style={{
-                        backgroundColor: `${subject.color}14`,
-                        color: subject.color,
-                      }}
-                    >
-                      <BookOpen size={19} />
-                    </span>
                     <span>
                       <strong>{subject.title}</strong>
                       <small>
@@ -165,7 +134,6 @@ export function DashboardPage() {
                         выполнено
                       </small>
                     </span>
-                    <ArrowUpRight size={16} />
                   </Link>
                 ))}
               </div>
@@ -175,7 +143,7 @@ export function DashboardPage() {
                 text="Добавь дисциплину, чтобы создавать задания."
                 action={
                   <Link className="text-link" to="/subjects/new">
-                    Добавить дисциплину <ArrowRight size={15} />
+                    Добавить дисциплину
                   </Link>
                 }
               />
@@ -186,7 +154,6 @@ export function DashboardPage() {
           <section className="panel week-panel">
             <div className="panel-heading">
               <h2>Ближайшие 7 дней</h2>
-              <CalendarDays size={19} />
             </div>
             <p className="muted calendar-month">
               {new Date().toLocaleDateString("ru-RU", {

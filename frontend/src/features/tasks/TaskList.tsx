@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, Check, Clock3 } from "lucide-react";
+
 import { Link } from "react-router-dom";
 import { errorMessage, useTaskStatusMutation } from "../../shared/api";
 import {
@@ -31,15 +31,14 @@ export function TaskRow({ task }: { task: Task }) {
       className={`task-list-item ${task.status === "done" ? "task-done" : ""}`}
     >
       <div className="task-row">
-        <button
+        <input
+          type="checkbox"
           className={`task-check ${task.status === "done" ? "checked" : ""}`}
           disabled={isLoading}
-          onClick={toggle}
+          onChange={toggle}
           aria-label={`${task.status === "done" ? "Вернуть в работу" : "Выполнить"}: ${task.title}`}
-          aria-pressed={task.status === "done"}
-        >
-          {task.status === "done" && <Check size={14} />}
-        </button>
+          checked={task.status === "done"}
+        />
         <div className="task-name">
           <Link className="task-title" to={`/tasks/${task.id}`}>
             {task.title}
@@ -58,7 +57,6 @@ export function TaskRow({ task }: { task: Task }) {
           </div>
         </div>
         <span className={`task-date ${overdue ? "overdue" : ""}`}>
-          <Clock3 size={13} />
           {task.due_date === dateKey() ? "Сегодня" : shortDate(task.due_date)}
           {overdue && <small>Просрочено</small>}
         </span>
@@ -66,13 +64,6 @@ export function TaskRow({ task }: { task: Task }) {
           <i />
           {priorityLabels[task.priority]}
         </span>
-        <Link
-          className="icon-button task-open"
-          to={`/tasks/${task.id}`}
-          aria-label={`Открыть: ${task.title}`}
-        >
-          <ArrowUpRight size={17} />
-        </Link>
       </div>
       <FormError message={error} />
     </li>

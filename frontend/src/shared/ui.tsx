@@ -1,18 +1,11 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { Link } from "react-router-dom";
-import {
-  AlertCircle,
-  ArrowLeft,
-  BookOpen,
-  LoaderCircle,
-  X,
-} from "lucide-react";
+
 import { errorMessage } from "./api";
 
 export function Spinner({ label = "Загружаем данные…" }: { label?: string }) {
   return (
     <div className="loading" role="status">
-      <LoaderCircle className="spin" size={24} />
       <span>{label}</span>
     </div>
   );
@@ -26,7 +19,6 @@ export function ErrorState({
 }) {
   return (
     <div className="error-state" role="alert">
-      <AlertCircle size={22} />
       <p>{errorMessage(error)}</p>
       {retry && (
         <button className="button secondary" onClick={retry}>
@@ -39,7 +31,6 @@ export function ErrorState({
 export function FormError({ message }: { message: string }) {
   return message ? (
     <p className="form-error" role="alert">
-      <AlertCircle size={17} />
       {message}
     </p>
   ) : null;
@@ -55,9 +46,6 @@ export function EmptyState({
 }) {
   return (
     <div className="empty-state">
-      <span className="empty-icon">
-        <BookOpen size={26} />
-      </span>
       <h3>{title}</h3>
       <p>{text}</p>
       {action}
@@ -95,7 +83,6 @@ export function BackLink({
 }) {
   return (
     <Link className="back-link" to={to}>
-      <ArrowLeft size={16} />
       {children}
     </Link>
   );
@@ -140,7 +127,7 @@ export function ConfirmDialog({
           disabled={busy}
           onClick={onClose}
         >
-          <X size={19} />
+          Закрыть
         </button>
       </div>
       <p>{children}</p>

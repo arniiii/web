@@ -5,7 +5,7 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import { Plus, Save } from "lucide-react";
+
 import {
   errorMessage,
   useCreateTaskMutation,
@@ -180,7 +180,6 @@ function TaskForm({
             Отмена
           </Link>
           <button className="button primary" disabled={busy}>
-            <Save size={16} />
             {busy ? "Сохраняем…" : "Сохранить задание"}
           </button>
         </div>
@@ -212,7 +211,6 @@ export function TaskEditorPage() {
           text="Каждое задание относится к предмету. Создай дисциплину, затем вернись к заданию."
           action={
             <Link className="button primary" to="/subjects/new">
-              <Plus size={16} />
               Добавить дисциплину
             </Link>
           }

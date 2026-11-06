@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, BookOpen, Plus, Search } from "lucide-react";
+
 import { Link } from "react-router-dom";
 import { useSubjectsQuery } from "../../shared/api";
 import { EmptyState, ErrorState, PageHeader, Spinner } from "../../shared/ui";
@@ -19,14 +19,12 @@ export function SubjectsPage() {
         title="Мои дисциплины"
         actions={
           <Link className="button primary" to="/subjects/new">
-            <Plus size={17} />
             Добавить дисциплину
           </Link>
         }
       />
       <div className="toolbar">
         <label className="search-field">
-          <Search size={17} />
           <input
             aria-label="Поиск дисциплин"
             value={search}
@@ -55,18 +53,7 @@ export function SubjectsPage() {
                 to={`/subjects/${subject.id}`}
                 key={subject.id}
               >
-                <div className="subject-card-top">
-                  <span
-                    className="subject-icon"
-                    style={{
-                      color: subject.color,
-                      background: `${subject.color}14`,
-                    }}
-                  >
-                    <BookOpen size={23} />
-                  </span>
-                  <ArrowUpRight size={19} />
-                </div>
+                <div className="subject-card-top"></div>
                 <h2>{subject.title}</h2>
                 <p>{subject.teacher || "Преподаватель не указан"}</p>
                 <div className="subject-description">
@@ -90,7 +77,6 @@ export function SubjectsPage() {
             );
           })}
           <Link className="add-subject-card" to="/subjects/new">
-            <Plus size={27} />
             <span>Новая дисциплина</span>
           </Link>
         </div>
@@ -113,7 +99,6 @@ export function SubjectsPage() {
                 </button>
               ) : (
                 <Link className="button primary" to="/subjects/new">
-                  <Plus size={16} />
                   Добавить дисциплину
                 </Link>
               )
