@@ -8,13 +8,12 @@ import {
   Plus,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useMeQuery, useSubjectsQuery, useTasksQuery } from "../../shared/api";
+import { useSubjectsQuery, useTasksQuery } from "../../shared/api";
 import { dateKey, dayOffset, parseDate } from "../../shared/dates";
 import { EmptyState, ErrorState, PageHeader, Spinner } from "../../shared/ui";
 import { TaskList } from "../tasks/TaskList";
 
 export function DashboardPage() {
-  const { data: user } = useMeQuery();
   const subjectsQuery = useSubjectsQuery();
   const tasksQuery = useTasksQuery();
   if (subjectsQuery.isLoading || tasksQuery.isLoading) return <Spinner />;
@@ -38,13 +37,10 @@ export function DashboardPage() {
   ).length;
   const progress = tasks.length ? Math.round((done / tasks.length) * 100) : 0;
   const upcoming = active.slice(0, 5);
-  const firstName = user?.name.split(" ")[0] || "студент";
   return (
     <>
       <PageHeader
-        eyebrow="ТВОЙ УЧЕБНЫЙ ПЛАН"
-        title={`${firstName}, всё по порядку`}
-        subtitle="Один взгляд — и понятно, что делать дальше."
+        title="Обзор семестра"
         actions={
           <Link className="button primary" to="/tasks/new">
             <Plus size={17} />
@@ -52,56 +48,11 @@ export function DashboardPage() {
           </Link>
         }
       />
-      <section className="overview-banner">
-        <div className="banner-copy">
-          <span className="banner-kicker">
-            <span />
-            ТВОЙ СЕМЕСТР В ФОКУСЕ
-          </span>
-          <h2>
-            {tasks.length && progress === 100
-              ? "Отличная работа."
-              : "Маленькие шаги."}
-            <br />
-            <em>
-              {tasks.length && progress === 100
-                ? "Всё выполнено."
-                : "Большой результат."}
-            </em>
-          </h2>
-          <p>
-            {overdue
-              ? `Есть просроченные задания: ${overdue}. Начни с самого важного.`
-              : "Не нужно успевать всё сразу. Выбери главное на сегодня."}
-          </p>
-          <Link to="/tasks">
-            Перейти к заданиям <ArrowRight size={16} />
-          </Link>
-        </div>
-        <div className="banner-graphic" aria-hidden="true">
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="graphic-card">
-            <span className="graphic-check">
-              <CheckCheck size={28} />
-            </span>
-            <span className="graphic-line long" />
-            <span className="graphic-line" />
-            <div className="graphic-progress">
-              <i style={{ width: `${Math.max(progress, 6)}%` }} />
-            </div>
-            <small>{progress}% ВЫПОЛНЕНО</small>
-          </div>
-          <span className="spark spark-one">✦</span>
-          <span className="spark spark-two">✧</span>
-        </div>
-      </section>
       <section className="stats-grid" aria-label="Статистика семестра">
         {[
           {
             label: "Дисциплины",
             value: subjects.length,
-            text: "в твоём учебном плане",
             icon: BookOpen,
             className: "sage",
             to: "/subjects",
@@ -109,7 +60,6 @@ export function DashboardPage() {
           {
             label: "Ближайшие 7 дней",
             value: week,
-            text: "ближайших дедлайнов",
             icon: CalendarDays,
             className: "sand",
             to: `/tasks?due_after=${dateKey()}&due_before=${dayOffset(6)}&pending=true`,
@@ -125,7 +75,6 @@ export function DashboardPage() {
           {
             label: "Просрочено",
             value: overdue,
-            text: overdue ? "требуют внимания" : "всё под контролем",
             icon: Flag,
             className: "peach",
             to: `/tasks?due_before=${dayOffset(-1)}&pending=true`,
@@ -139,7 +88,7 @@ export function DashboardPage() {
               </span>
             </div>
             <strong>{stat.value.toString().padStart(2, "0")}</strong>
-            <small>{stat.text}</small>
+            {stat.text && <small>{stat.text}</small>}
           </Link>
         ))}
       </section>
@@ -148,7 +97,6 @@ export function DashboardPage() {
           <section className="panel">
             <div className="panel-heading">
               <div>
-                <p className="eyebrow">ДЕРЖИ В ФОКУСЕ</p>
                 <h2>
                   Ближайшие задания{" "}
                   <span className="heading-count">{active.length}</span>
@@ -163,12 +111,12 @@ export function DashboardPage() {
             ) : (
               <EmptyState
                 title={
-                  tasks.length ? "Всё выполнено" : "Первый шаг — первое задание"
+                  tasks.length ? "Все задания выполнены" : "Заданий пока нет"
                 }
                 text={
                   tasks.length
-                    ? "Можно выдохнуть или запланировать следующий шаг."
-                    : "Добавь дисциплину и запиши, что нужно сделать."
+                    ? "Новые задания можно добавить в учебный план."
+                    : "Добавь дисциплину и задание."
                 }
                 action={
                   <Link
@@ -187,7 +135,6 @@ export function DashboardPage() {
           <section className="panel subjects-preview">
             <div className="panel-heading">
               <div>
-                <p className="eyebrow">ОСНОВА ТВОЕГО ПЛАНА</p>
                 <h2>Мои дисциплины</h2>
               </div>
               <Link className="text-link" to="/subjects">
@@ -224,8 +171,8 @@ export function DashboardPage() {
               </div>
             ) : (
               <EmptyState
-                title="Здесь будут твои дисциплины"
-                text="Добавь предметы, которые изучаешь в этом семестре."
+                title="Дисциплин пока нет"
+                text="Добавь дисциплину, чтобы создавать задания."
                 action={
                   <Link className="text-link" to="/subjects/new">
                     Добавить дисциплину <ArrowRight size={15} />
@@ -276,7 +223,6 @@ export function DashboardPage() {
             </div>
           </section>
           <section className="panel progress-panel">
-            <p className="eyebrow">ТЫ ДВИЖЕШЬСЯ ВПЕРЁД</p>
             <h2>Прогресс семестра</h2>
             <div
               className="progress-ring"
@@ -297,7 +243,7 @@ export function DashboardPage() {
             <p>
               {tasks.length
                 ? `${done} из ${tasks.length} заданий выполнено`
-                : "Твой прогресс появится здесь"}
+                : "Заданий пока нет"}
             </p>
             <div className="progress-legend">
               <span>
@@ -310,11 +256,6 @@ export function DashboardPage() {
               </span>
             </div>
           </section>
-          <div className="thought-card">
-            <span>✳</span>
-            <p>Не сравнивай свой прогресс с чужим. Сравни его со вчерашним.</p>
-            <small>НАПОМИНАНИЕ НА СЕГОДНЯ</small>
-          </div>
         </aside>
       </div>
     </>

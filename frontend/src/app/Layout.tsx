@@ -30,8 +30,6 @@ export function Layout() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const done = tasks.filter((task) => task.status === "done").length;
-  const progress = tasks.length ? Math.round((done / tasks.length) * 100) : 0;
   const section = location.pathname.startsWith("/subjects")
     ? "Дисциплины"
     : location.pathname.startsWith("/tasks")
@@ -67,7 +65,6 @@ export function Layout() {
         >
           <X size={20} />
         </button>
-        <div className="workspace-label">ЛИЧНОЕ ПРОСТРАНСТВО</div>
         <nav aria-label="Основная навигация">
           {[
             ["/overview", "Обзор", LayoutDashboard],
@@ -93,19 +90,6 @@ export function Layout() {
             );
           })}
         </nav>
-        <div className="sidebar-progress">
-          <span className="sidebar-progress-icon">✦</span>
-          <h3>Шаг за шагом</h3>
-          <p>
-            {tasks.length
-              ? `${done} из ${tasks.length} заданий уже позади`
-              : "Каждое выполненное задание приближает к цели"}
-          </p>
-          <div className="progress-track">
-            <i style={{ width: `${progress}%` }} />
-          </div>
-          <span>{progress}% учебного плана</span>
-        </div>
         <div className="sidebar-account">
           <Link to="/profile" className="account-link">
             <span className="avatar">
@@ -160,10 +144,6 @@ export function Layout() {
         <main className="main-content" id="main-content">
           <Outlet />
         </main>
-        <footer className="app-footer">
-          <span>Семестр — всё важное на своём месте.</span>
-          <span>Твой план. Твой ритм.</span>
-        </footer>
       </div>
     </div>
   );

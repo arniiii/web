@@ -111,7 +111,7 @@ export function SubjectDetailPage() {
           <TaskList tasks={tasksQuery.data} />
         ) : (
           <EmptyState
-            title="План пока чистый"
+            title="Заданий пока нет"
             text="Добавь первое задание по этой дисциплине."
           />
         )}

@@ -90,11 +90,7 @@ function TaskForm({
   return (
     <>
       <BackLink to={back}>К заданиям</BackLink>
-      <PageHeader
-        eyebrow="СЛЕДУЮЩИЙ ШАГ"
-        title={task ? "Редактирование задания" : "Новое задание"}
-        subtitle="Понятное название и конкретный срок — хорошее начало."
-      />
+      <PageHeader title={task ? "Редактирование задания" : "Новое задание"} />
       <form
         className="panel editor-form stack-form"
         onSubmit={submit}

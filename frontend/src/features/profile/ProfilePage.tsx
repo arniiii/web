@@ -97,11 +97,7 @@ export function ProfilePage() {
   const { data: user } = useMeQuery();
   return (
     <>
-      <PageHeader
-        eyebrow="ЛИЧНОЕ ПРОСТРАНСТВО"
-        title="Мой профиль"
-        subtitle="Немного о тебе и твоём учебном пути."
-      />
+      <PageHeader title="Мой профиль" />
       {user && <ProfileForm key={user.id} user={user} />}
     </>
   );

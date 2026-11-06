@@ -1,13 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import {
-  ArrowRight,
-  BookOpen,
-  Check,
-  Eye,
-  EyeOff,
-  Layers3,
-} from "lucide-react";
+import { ArrowRight, Eye, EyeOff, Layers3 } from "lucide-react";
 import {
   api,
   errorMessage,
@@ -66,67 +59,22 @@ export function AuthPage({ register = false }: { register?: boolean }) {
   }
   return (
     <div className="auth-layout">
-      <aside className="auth-story">
-        <Link to="/login" className="brand">
-          <span className="brand-icon">
-            <Layers3 size={23} />
-          </span>
-          семестр<span className="brand-period">.</span>
-        </Link>
-        <div className="auth-story-content">
-          <span className="story-kicker">ТВОЙ УЧЕБНЫЙ РИТМ</span>
-          <h1>
-            Большие цели.
-            <br />
-            <em>Понятные шаги.</em>
-          </h1>
-          <p>
-            Собери дисциплины, задания и дедлайны в одном спокойном
-            пространстве.
-          </p>
-          <div className="notebook">
-            <div className="notebook-heading">
-              <BookOpen size={20} />
-              <span>Всё идёт по плану</span>
-              <span className="notebook-dots">•••</span>
-            </div>
-            {[
-              "Дисциплины — под рукой",
-              "Дедлайны — перед глазами",
-              "Прогресс — каждый день",
-            ].map((item) => (
-              <div className="notebook-row" key={item}>
-                <span>
-                  <Check size={15} />
-                </span>
-                {item}
-              </div>
-            ))}
-            <div className="notebook-line">
-              <i />
-              <span>Меньше хаоса. Больше ясности.</span>
-            </div>
+      <main className="auth-main" id="main-content">
+        <div className="auth-header">
+          <Link to="/login" className="brand">
+            <span className="brand-icon">
+              <Layers3 size={23} />
+            </span>
+            семестр<span className="brand-period">.</span>
+          </Link>
+          <div className="auth-switch">
+            <Link to={register ? "/login" : "/register"}>
+              {register ? "Войти" : "Создать аккаунт"} <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
-        <p className="auth-footnote">
-          Учись в своём темпе. Держи главное в фокусе.
-        </p>
-      </aside>
-      <main className="auth-main" id="main-content">
-        <div className="auth-switch">
-          {register ? "Уже есть аккаунт?" : "Впервые здесь?"}{" "}
-          <Link to={register ? "/login" : "/register"}>
-            {register ? "Войти" : "Создать аккаунт"} <ArrowRight size={14} />
-          </Link>
-        </div>
         <div className="auth-form-wrap">
-          <p className="eyebrow">ТВОЁ УЧЕБНОЕ ПРОСТРАНСТВО</p>
-          <h2>{register ? "Начнём новый семестр" : "С возвращением"}</h2>
-          <p className="page-subtitle">
-            {register
-              ? "Создай аккаунт и составь свой первый учебный план."
-              : "Войди, чтобы вернуться к своим планам."}
-          </p>
+          <h1>{register ? "Регистрация" : "Вход"}</h1>
           {expired && (
             <p className="notice" role="status">
               Сессия истекла. Войди ещё раз, чтобы продолжить.
@@ -135,12 +83,12 @@ export function AuthPage({ register = false }: { register?: boolean }) {
           <form onSubmit={submit} noValidate className="stack-form">
             {register && (
               <label>
-                Как тебя зовут
+                Имя
                 <input
                   autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Твоё имя"
+                  placeholder="Имя"
                   minLength={2}
                   maxLength={80}
                   required
@@ -194,11 +142,7 @@ export function AuthPage({ register = false }: { register?: boolean }) {
               <ArrowRight size={18} />
             </button>
           </form>
-          <p className="auth-note">Твои планы доступны только тебе.</p>
         </div>
-        <span className="auth-copyright">
-          Семестр · Личный учебный планировщик
-        </span>
       </main>
     </div>
   );

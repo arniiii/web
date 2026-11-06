@@ -64,9 +64,7 @@ function SubjectForm({ subject }: { subject?: Subject }) {
     <>
       <BackLink to={back}>К дисциплинам</BackLink>
       <PageHeader
-        eyebrow="УЧЕБНЫЙ ПЛАН"
         title={subject ? "Редактирование дисциплины" : "Новая дисциплина"}
-        subtitle="Основная информация, чтобы предмет всегда был под рукой."
       />
       <form
         className="panel editor-form stack-form"

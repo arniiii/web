@@ -16,9 +16,7 @@ export function SubjectsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="УЧЕБНЫЙ ПЛАН"
         title="Мои дисциплины"
-        subtitle="Каждому предмету — своё место, каждому заданию — понятный контекст."
         actions={
           <Link className="button primary" to="/subjects/new">
             <Plus size={17} />
@@ -72,8 +70,7 @@ export function SubjectsPage() {
                 <h2>{subject.title}</h2>
                 <p>{subject.teacher || "Преподаватель не указан"}</p>
                 <div className="subject-description">
-                  {subject.description ||
-                    "Добавь задания и начни собирать учебный план."}
+                  {subject.description || "Описание не добавлено"}
                 </div>
                 <div className="subject-progress-label">
                   <span>
@@ -95,13 +92,12 @@ export function SubjectsPage() {
           <Link className="add-subject-card" to="/subjects/new">
             <Plus size={27} />
             <span>Новая дисциплина</span>
-            <small>Ещё один предмет в твоём плане</small>
           </Link>
         </div>
       ) : (
         <div className="panel">
           <EmptyState
-            title={search ? "Ничего не нашлось" : "С чего начнём этот семестр?"}
+            title={search ? "Ничего не найдено" : "Дисциплин пока нет"}
             text={
               search
                 ? "Попробуй другое название или очисти поиск."

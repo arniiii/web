@@ -70,7 +70,7 @@ export function PageHeader({
   subtitle,
   actions,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   subtitle?: string;
   actions?: ReactNode;
@@ -78,7 +78,7 @@ export function PageHeader({
   return (
     <header className="page-header">
       <div>
-        <p className="eyebrow">{eyebrow}</p>
+        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h1>{title}</h1>
         {subtitle && <p className="page-subtitle">{subtitle}</p>}
       </div>

@@ -50,9 +50,7 @@ export function TasksPage() {
   return (
     <>
       <PageHeader
-        eyebrow="ОТ ПЛАНОВ К РЕЗУЛЬТАТАМ"
         title="Мои задания"
-        subtitle="Разложи большое на маленькое и двигайся в своём темпе."
         actions={
           <Link className="button primary" to="/tasks/new">
             <Plus size={17} />
@@ -194,11 +192,7 @@ export function TasksPage() {
           <TaskList tasks={tasks} />
         ) : (
           <EmptyState
-            title={
-              params.size
-                ? "Подходящих заданий нет"
-                : "Освободи голову — запиши задачи"
-            }
+            title={params.size ? "Подходящих заданий нет" : "Заданий пока нет"}
             text={
               params.size
                 ? "Измени условия поиска или сбрось фильтры."
